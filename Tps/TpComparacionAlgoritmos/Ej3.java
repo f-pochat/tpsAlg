@@ -1,12 +1,9 @@
 package TpComparacionAlgoritmos;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class Ej3<T> {
+public class Ej3 {
 
-    //[1,2,3,4,5] vs [6,7,8]
     static <T> T[] Merge(Comparable<T> array1[], Comparable<T> array2[]){
         int a = 0,b = 0 ,c = 0;
 
@@ -39,16 +36,6 @@ public class Ej3<T> {
         }
 
         return (T[]) output.toArray();
-    }
-
-    public static <T> void printArray(T[] array)
-    {
-
-        for(int i=0; i<array.length; i++)
-        {
-            System.out.print(array[i] + ", ");
-        }
-        System.out.println();
     }
 
 }
