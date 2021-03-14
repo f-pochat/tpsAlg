@@ -1,0 +1,67 @@
+Ej1)
+Nombre: logaritmoDeNumeroReal
+Dominio: R
+Codominio: R
+/* Calcula el logaritmo de un numero real
+PreCondicion: x € R / x > 0
+PostCondicion: x
+
+Nombre: sonVectoresIguales
+Domimio: Vectores
+Codiminio: Boolean
+/* Se fija si ambos vectores son iguales. En caso de serlos, devuelve Verdadero
+PreCondicion: Ambos vectores del mismo Espacio Vectorial
+PostCondicion: V o F
+
+Nombre: estaVectorOrdenado
+Dominio: Vector
+Codominio: Boolean
+/* Se fija si el vector esta ordenado. En caso de estarlo, devuelve verdadero
+PreCondicion: Cualquier Vector
+PostCondicion: V o F
+
+Ej2)
+Nombre: inversoDeUnNumero
+Dominio: R
+Codominio: R
+/* Obtener el numero inverso de un numero, practicamente cambiar el signo
+precondicion: x
+postcondicion: x
+
+Nombre: factorialDeUnNumero
+Dominio: Z (int)
+Codiminio: Z (int)
+/* De un número entero positivo n, expresado n!,
+   como el producto de todos los números enteros
+   positivos menores o iguales que n.
+precondicion: x € R / x > 0
+postCondicion: x > 0
+
+Nombre: absoluteValue
+Dominio R
+Codominio R
+/* Obtiene el valor absoluto de un numero real
+Precondicion: x
+PostCondicion: x € R / x >= 0
+
+Ej3)
+Nombre: comoSon2Rectas
+Dominio Ecuacion X Ecuacion
+Codominio String
+/* Indica si dos rectas dadas son paralelas, coincidentes o no se cortan
+Precondicion: Ecuaciones de Orden 1
+PostCondicion: {"Coincidentes", "Paralelas", "No se Cortan"}
+
+Nombre: elementoEnUnIndice
+Dominio: Vector X Z (int)
+Codominio: Z (int)
+/* Retorna el elemento que se encuentra en la i-ésima posición de un vector de N posiciones
+Precondición: Cualquier vector X i € [1;N]
+Postcondición: R (Elemento o componente del vector]
+
+Nombre: cuadraticRoots
+Dominio: Ecuacion
+Codominio Conjunto de Numeros Reales
+/* Hallar las raices de una ecuacuacon cuadratica
+Precondicion: De Orden 2
+Postcondicion: 1 o 2 Reales o conjunto vacio
