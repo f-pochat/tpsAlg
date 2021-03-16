@@ -47,7 +47,7 @@ PostCondicion: x € R / x >= 0
 Ej3)
 Nombre: comoSon2Rectas
 Dominio Ecuacion X Ecuacion
-Codominio String
+Codominio Respuesta en Palabra
 /* Indica si dos rectas dadas son paralelas, coincidentes o no se cortan
 Precondicion: Ecuaciones de Orden 1
 PostCondicion: {"Coincidentes", "Paralelas", "No se Cortan"}
@@ -65,3 +65,15 @@ Codominio Conjunto de Numeros Reales
 /* Hallar las raices de una ecuacuacon cuadratica
 Precondicion: De Orden 2
 Postcondicion: 1 o 2 Reales o conjunto vacio
+
+Ej4)
+Necesidades: Conteo de la cantidad de autos que ingresan para no pasar la capacidad
+             Optimizacion del tiempo o automaticion del proceso de ingreso al estacionamiento,
+             Entrega del compobante de manera automatica,
+             Evitar entregar las llaves del auto sin comprobante,
+             Registro de patente, marca y modelo,
+             Mejora en el sistema de cobros y su registro,
+
+Nombre: Mejora en el estacionamiento
+Precondicion:
+

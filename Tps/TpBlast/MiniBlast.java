@@ -3,9 +3,9 @@ package TpBlast;
 import java.util.ArrayList;
 
 public class MiniBlast {
-    public static void main(String[] args) {
+   /*public static void main(String[] args) {
         System.out.println(miniBlast("abcdefghijklmonqrstu", "avcfejfqwerhgmdinghe"));
-    }
+    }*/
 
     public static double miniBlast(String reference, String query) {
         int count = 0;
