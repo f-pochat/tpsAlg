@@ -1,6 +1,6 @@
 package StacksandQueues;
 
-public class StackDin<T> implements StackInterface<T>{
+public class StackDin<T> implements StackInterface<T> {
 
     Node tope;
     private int size;
@@ -22,12 +22,12 @@ public class StackDin<T> implements StackInterface<T>{
     }
 
     @Override
-    public void pop() throws IsEmptyException{
+    public void pop() throws IsEmptyException {
         if (!isEmpty()){
             tope = tope.next;
             size--;
         }else{
-            throw new IsEmptyException("Stack is empty");
+            throw new IsEmptyException();
         }
     }
 

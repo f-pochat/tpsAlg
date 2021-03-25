@@ -1,6 +1,6 @@
 package StacksandQueues;
 
-public class StackEst<T> implements StackInterface<T>{
+public class StackEst<T> implements StackInterface<T> {
 
     T[] stack;
     int tope;
@@ -17,7 +17,7 @@ public class StackEst<T> implements StackInterface<T>{
 
     @Override
     public T peek() {
-        return (T) stack[tope];
+        return (T) stack[tope-1];
     }
 
     @Override
@@ -25,9 +25,8 @@ public class StackEst<T> implements StackInterface<T>{
         if (!isEmpty()){
             tope--;
         }else {
-            throw new IsEmptyException("Stack is empty");
+            throw new IsEmptyException();
         }
-
     }
 
     @Override
@@ -42,7 +41,7 @@ public class StackEst<T> implements StackInterface<T>{
     @Override
     public int size() {
         if (!isEmpty()){
-            return tope +1;
+            return tope;
         }else{
             return 0;
         }
