@@ -1,12 +1,12 @@
 package StacksandQueues;
 
-public class StackEst<T> implements StackInterface{
+public class StackEst<T> implements StackInterface<T>{
 
-    Object[] stack;
+    T[] stack;
     int tope;
 
     public StackEst() {
-        stack = new Object[10];
+        stack = (T[]) new Object[10];
         tope = 0;
     }
 
@@ -16,8 +16,8 @@ public class StackEst<T> implements StackInterface{
     }
 
     @Override
-    public Object peek() {
-        return stack[tope];
+    public T peek() {
+        return (T) stack[tope];
     }
 
     @Override
@@ -35,7 +35,7 @@ public class StackEst<T> implements StackInterface{
         if (size() % 10 == 0){
             enlargeStack();
         }
-        stack[tope] = element;
+        stack[tope] = (T) element;
         tope++;
     }
 
@@ -59,7 +59,7 @@ public class StackEst<T> implements StackInterface{
         for (int i = 0; i < size(); i++) {
             stackAux[i] = stack[i];
         }
-        stack = stackAux;
+        stack = (T[]) stackAux;
     }
 
 }

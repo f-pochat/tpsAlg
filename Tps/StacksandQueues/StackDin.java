@@ -1,6 +1,6 @@
 package StacksandQueues;
 
-public class StackDin implements StackInterface{
+public class StackDin<T> implements StackInterface<T>{
 
     Node tope;
     private int size;
@@ -17,8 +17,8 @@ public class StackDin implements StackInterface{
     }
 
     @Override
-    public Object peek() {
-        return tope.data;
+    public T peek() {
+        return (T) tope.data;
     }
 
     @Override

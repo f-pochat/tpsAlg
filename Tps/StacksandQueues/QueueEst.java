@@ -1,15 +1,15 @@
 package StacksandQueues;
 
-public class QueueEst implements QueueInterface {
+public class QueueEst<T> implements QueueInterface<T> {
 
-    Object[] queue;
+    T[] queue;
     private int arraySize;
     private int size;
     int front;
     int end;
 
     public QueueEst() {
-        queue = new Object[10];
+        queue = (T[]) new Object[10];
         arraySize = 10;
         size = 0;
         front = 0;
@@ -18,34 +18,36 @@ public class QueueEst implements QueueInterface {
 
     @Override
     public void enqueue(Object element) {
-        if (end < arraySize){
-            queue[end] = element;
+        if (size < queue.length){
+            queue[end] = (T) element;
             end++;
         }else {
             if (front > 0){
                 end = 0;
-                queue[end] = element;
+                queue[end] = (T) element;
                 end++;
             }else {
-                enlargeQueue();
+                try {
+                    enlargeQueue();
+                } catch (IsEmptyException e) {
+                    e.printStackTrace();
+                }
                 enqueue(element);
             }
         }
-
         size++;
     }
 
-    private void enlargeQueue() {
-        Object[] queueAux = new Object[size() + 10];
+    private void enlargeQueue() throws IsEmptyException {
+        Object[] auxQueue = new Object[size + 10];
         for (int i = 0; i < size(); i++) {
-            queueAux[i] = queue[i];
+            auxQueue[i] = dequeue();
         }
-        queue = queueAux;
-        arraySize += 10;
+        queue = (T[]) auxQueue;
     }
 
     @Override
-    public Object dequeue() throws IsEmptyException {
+    public T dequeue() throws IsEmptyException {
         if (isEmpty()){
             throw new IsEmptyException("Queue is Empty");
         }else {
