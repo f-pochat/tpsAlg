@@ -49,4 +49,5 @@ public class StackDin<T> implements StackInterface<T> {
         tope.next = null;
         size = 0;
     }
+
 }

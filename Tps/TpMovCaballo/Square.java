@@ -43,7 +43,7 @@ public class Square {
 
     }
 
-    /*public StackDin<Square> options() throws IsEmptyException {
+    public StackDin<Square> options() throws IsEmptyException {
         //Add every movement even if its not valid
         StackDin<Square> stack = new StackDin<>();
         stack.stack(new Square(getColumna() + 1, getFila() + 2));
@@ -65,7 +65,7 @@ public class Square {
         }
 
         return stack2;
-    }*/
+    }
 
     public void printSquare(){
         Character colChar;
@@ -99,5 +99,16 @@ public class Square {
         }
         
         System.out.println(colChar + "" + fila);
+    }
+     public  boolean contains(Square square) throws IsEmptyException {
+        while (!options().isEmpty()) {
+            if (options().peek().equals(square))
+                return true;
+            else {
+                options().pop();
+            }
+        }
+
+        return false;
     }
 }

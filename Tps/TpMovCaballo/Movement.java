@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Movement {
+   static Horse horse;
     public static void main(String[] args) throws IsEmptyException {
         System.out.println("Ingresar casillero inicial");
         Scanner scanner = new Scanner(System.in);
@@ -14,13 +15,14 @@ public class Movement {
         int col = scanner.nextInt();
         System.out.println("Fila:");
         int fila = scanner.nextInt();
-        Square initialSquare = new Square(col,fila);
+        horse = new Horse(new Square(col,fila));
+        //Square initialSquare = new Square(col,fila);
         System.out.println("Puede ir al: ");
-        initialSquare.optionsPrinter();
+        horse.getPosition().optionsPrinter();
         menu();
     }
 
-    private static void menu(){
+    private static void menu() throws IsEmptyException {
         System.out.println("MENU");
         System.out.println("1: Saltar");
         System.out.println("2: Pilas");
@@ -31,6 +33,13 @@ public class Movement {
 
         switch (option){
             case 1:
+                System.out.println();
+
+                System.out.println("a donde te queres mover?");
+                Scanner scanner1 = new Scanner(System.in);
+                String moveTo = scanner1.nextLine();
+                horse.jump(new Square(moveTo.charAt(0), moveTo.charAt(1)));
+                horse.getPosition().printSquare();
                 break;
             case 2:
                 break;

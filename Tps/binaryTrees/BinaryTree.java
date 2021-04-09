@@ -1,5 +1,7 @@
 package binaryTrees;
 
+import javax.swing.*;
+
 public class BinaryTree<T> {
 
     public static void main(String[] args) {
@@ -121,5 +123,6 @@ public class BinaryTree<T> {
         }
         return 1 + Math.max(getLeft().height(), getRight().height());
     }
+
 
 }
