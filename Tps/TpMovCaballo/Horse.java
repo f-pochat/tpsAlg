@@ -5,7 +5,7 @@ import StacksandQueues.IsEmptyException;
 public class Horse{
      private Square position;
 
-     public void jump(Square moveTo) throws IsEmptyException {
+     public void jump( Square moveTo) throws IsEmptyException {
          if(position.contains(moveTo)) {
              position = moveTo;
          }else

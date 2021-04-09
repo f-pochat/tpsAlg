@@ -44,8 +44,10 @@ public class Movement {
                 horse.getPosition().printSquare();
                 break;
             case 2:
+
                 break;
             case 3:
+
                 System.exit(0);
                 break;
             default:
