@@ -101,11 +101,12 @@ public class Square {
         System.out.println(colChar + "" + fila);
     }
      public  boolean contains(Square square) throws IsEmptyException {
-        while (!options().isEmpty()) {
-            if (options().peek().equals(square))
+        StackDin<Square> optionsAux = options();
+        while (!optionsAux.isEmpty()) {
+            if (optionsAux.peek().equals(square))
                 return true;
             else {
-                options().pop();
+                optionsAux.pop();
             }
         }
 

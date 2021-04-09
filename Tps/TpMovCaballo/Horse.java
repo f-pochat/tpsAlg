@@ -6,9 +6,9 @@ public class Horse{
      private Square position;
 
      public void jump( Square moveTo) throws IsEmptyException {
-         if(position.contains(moveTo))
+         if(position.contains(moveTo)) {
              position = moveTo;
-         else
+         }else
              System.out.println("casilla no valida");
      }
 
