@@ -16,7 +16,7 @@ public class Movement {
         System.out.println("Fila:");
         int fila = scanner.nextInt();
         horse = new Horse(new Square(col,fila));
-        //Square initialSquare = new Square(col,fila);
+
         System.out.println("Puede ir al: ");
         horse.getPosition().optionsPrinter();
         menu();

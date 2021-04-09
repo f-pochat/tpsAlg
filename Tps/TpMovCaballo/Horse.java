@@ -13,7 +13,8 @@ public class Horse{
          counter++;
          path[counter] = position;
          if (counter == 4){
-
+             Board b = new Board();
+        b.everyPathInEverySquare();
          }
      }
 
