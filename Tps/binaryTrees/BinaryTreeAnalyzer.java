@@ -6,12 +6,12 @@ public class BinaryTreeAnalyzer {
     public static void main(String[] args) {
         IntegerBinaryTree br = new IntegerBinaryTree(6);
         IntegerBinaryTree bl = new IntegerBinaryTree(4);
-        IntegerBinaryTree bt = new IntegerBinaryTree(2, bl, br);
-        IntegerBinaryTree br2 = new IntegerBinaryTree();
-        IntegerBinaryTree bl2 = new IntegerBinaryTree();
-        IntegerBinaryTree bt2 = new IntegerBinaryTree(3, bl2, br2);
+        IntegerBinaryTree bt = new IntegerBinaryTree(9, bl, br);
+        IntegerBinaryTree br2 = new IntegerBinaryTree(1);
+        IntegerBinaryTree bl2 = new IntegerBinaryTree(2);
+        IntegerBinaryTree bt2 = new IntegerBinaryTree(8, bl2, br2);
 
-        IntegerBinaryTree bprueba = new IntegerBinaryTree(1, bt, bt2);
+        IntegerBinaryTree bprueba = new IntegerBinaryTree(10, bt, bt2);
         IntegerBinaryTree bprueba2 = new IntegerBinaryTree(7, bt, bt2);
         IntegerBinaryTree bprueba3 = new IntegerBinaryTree(1,bt2,bt);
         IntegerBinaryTree bprueba4 = new IntegerBinaryTree(1,bt2);
@@ -24,6 +24,10 @@ public class BinaryTreeAnalyzer {
 
         System.out.println(lleno(bprueba5));
         System.out.println(completo((bprueba4)));
+
+        System.out.println(estable(bprueba));
+        System.out.println(estable(bprueba5));
+
 
     }
 
@@ -89,7 +93,49 @@ public class BinaryTreeAnalyzer {
             return true;
     }
 
+    static boolean estable(IntegerBinaryTree a){
+        if (a.isEmpty()) {
+            return true;
+        }else if (a.getLeft().isEmpty() && a.getRight().isEmpty()){
+            return true;
+        }
 
+        return a.getRoot() > a.getLeft().getRoot() && a.getRoot() > a.getLeft().getRoot() && estable(a.getLeft()) && estable(a.getRight());
+    }
+
+    //         1           |        1
+    //    3         4      |    3
+    //6     9   10      13 |6
+
+    /*static boolean ocurreArbin(IntegerBinaryTree a1, IntegerBinaryTree a2){
+        if (a1.height() == a2.height()){
+            return a1.getRoot().equals(a2.getRoot())
+        }else if (a1.height() > a2.height()){
+
+        }else {
+
+        }
+
+        /*if (a1.isEmpty() && a2.isEmpty()){
+            return true;
+        }
+
+        if (a1.height() == a2.height()){
+            if (a1.getRight().isEmpty() || a2.getRight().isEmpty()){
+                return ocurreArbin(a1.getLeft(), a2.getLeft());
+            }else if (a1.getLeft().isEmpty() || a2.getLeft().isEmpty()) {
+                return ocurreArbin(a1.getRight(), a2.getRight());
+            }else if (a1.getRoot().equals(a2.getRoot())) {
+                return ocurreArbin(a1.getRight(), a2.getRight()) && ocurreArbin(a1.getLeft(), a2.getLeft());
+            }else{
+                return false;
+            }
+        }else if (a1.height() > a2.height()){
+            return ocurreArbin(a1, a2.getLeft()) || ocurreArbin(a1,a2.getRight());
+        }else {
+            return ocurreArbin(a1.getLeft(), a2) || ocurreArbin(a1.getRight(),a2);
+        }
+    }*/
 
     private static void inorden(IntegerBinaryTree a, HashSet<Integer> arr){
         if(!a.isEmpty()){
@@ -100,7 +146,3 @@ public class BinaryTreeAnalyzer {
     }
 
 }
-
-    /*static boolean sameNodes(Integer a, Integer b){
-        return a.equals(b);
-    }*/

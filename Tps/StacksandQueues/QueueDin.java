@@ -2,8 +2,8 @@ package StacksandQueues;
 
 public class QueueDin<T> implements QueueInterface<T> {
 
-    AlgoritmoYEstructuraDeDatos.Node front;
-    AlgoritmoYEstructuraDeDatos.Node end;
+    Node front;
+    Node end;
     private int size;
 
     public QueueDin() {
@@ -13,7 +13,7 @@ public class QueueDin<T> implements QueueInterface<T> {
     @Override
     public void enqueue(Object element) {
         System.out.println(element);
-        AlgoritmoYEstructuraDeDatos.Node aux = new AlgoritmoYEstructuraDeDatos.Node(element);
+        Node aux = new Node(element);
         if (end == null){
             front = end = aux;
         }
@@ -27,7 +27,7 @@ public class QueueDin<T> implements QueueInterface<T> {
         if (isEmpty()){
             throw new IsEmptyException();
         }else {
-            AlgoritmoYEstructuraDeDatos.Node aux = front;
+            Node aux = front;
             front = front.next;
             if (front == null){
                 end = null;

@@ -2,7 +2,7 @@ package StacksandQueues;
 
 public class Node {
     Object data;
-    AlgoritmoYEstructuraDeDatos.Node next;
+    Node next;
 
     public Node() {
     }
