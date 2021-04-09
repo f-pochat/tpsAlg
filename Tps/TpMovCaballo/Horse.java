@@ -4,16 +4,23 @@ import StacksandQueues.IsEmptyException;
 
 public class Horse{
      private Square position;
+     private Square[] path;
+     private int counter =0;
+
 
      public void jump( Square moveTo) throws IsEmptyException {
-         if(position.contains(moveTo)) {
-             position = moveTo;
-         }else
-             System.out.println("casilla no valida");
+         position = moveTo;
+         counter++;
+         path[counter] = position;
+         if (counter == 4){
+
+         }
      }
 
     public Horse(Square position) {
         this.position = position;
+        path = new Square[5];
+        path[0] = position;
     }
 
     public Square getPosition() {
