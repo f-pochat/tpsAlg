@@ -16,7 +16,9 @@ public class Movement {
         System.out.println("Fila:");
         int fila = scanner.nextInt();
         horse = new Horse(new Square(col,fila));
-        //Square initialSquare = new Square(col,fila);
+        Square initialSquare = new Square(col,fila);
+        Board b = new Board();
+        b.everyPathInEverySquare();
         System.out.println("Puede ir al: ");
         horse.getPosition().optionsPrinter();
         menu();
@@ -36,11 +38,9 @@ public class Movement {
                 System.out.println();
 
                 System.out.println("a donde te queres mover?");
-                System.out.println("Columna:");
-                 int col = scanner.nextInt();
-                 System.out.println("Fila:");
-                 int fila = scanner.nextInt();
-                horse.jump(new Square(col,fila));
+                Scanner scanner1 = new Scanner(System.in);
+                String moveTo = scanner1.nextLine();
+                horse.jump(new Square(moveTo.charAt(0), moveTo.charAt(1)));
                 horse.getPosition().printSquare();
                 break;
             case 2:

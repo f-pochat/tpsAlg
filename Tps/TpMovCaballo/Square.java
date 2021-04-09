@@ -67,40 +67,22 @@ public class Square {
         return stack2;
     }
 
-    public void printSquare(){
-        Character colChar;
-        switch (columna){
-            case 1:
-                colChar = 'A';
-                break;
-            case 2:
-                colChar = 'B';
-                break;
-            case 3:
-                colChar = 'C';
-                break;
-            case 4:
-                colChar = 'D';
-                break;
-            case 5:
-                colChar = 'E';
-                break;
-            case 6:
-                colChar = 'F';
-                break;
-            case 7:
-                colChar = 'G';
-                break;
-            case 8:
-                colChar = 'H';
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + columna);
-        }
-        
-        System.out.println(colChar + "" + fila);
+    public String printSquare(){
+        char colChar = switch (columna) {
+            case 1 -> 'A';
+            case 2 -> 'B';
+            case 3 -> 'C';
+            case 4 -> 'D';
+            case 5 -> 'E';
+            case 6 -> 'F';
+            case 7 -> 'G';
+            case 8 -> 'H';
+            default -> throw new IllegalStateException("Unexpected value: " + columna);
+        };
+
+        return colChar + "" + fila;
     }
-     public  boolean contains(Square square) throws IsEmptyException {
+     public boolean contains(Square square) throws IsEmptyException {
         StackDin<Square> optionsAux = options();
         while (!optionsAux.isEmpty()) {
             if (optionsAux.peek().equals(square))
@@ -111,5 +93,29 @@ public class Square {
         }
 
         return false;
+    }
+
+    public void everyPath() throws IsEmptyException {
+        Square[] paths = new Square[5];
+        StackDin<Square> st = options();
+        while (!st.isEmpty()){
+            StackDin<Square> st1 = st.peek().options();
+            while (!st1.isEmpty()){
+                StackDin<Square> st2 = st1.peek().options();
+                while (!st2.isEmpty()){
+                    StackDin<Square> st3 = st2.peek().options();
+                    while (!st3.isEmpty()){
+                        System.out.println(printSquare() + "-" + st.peek().printSquare() + "-"
+                                + st1.peek().printSquare() + "-" + st2.peek().printSquare() + "-"
+                                + st3.peek().printSquare());
+
+                        st3.pop();
+                    }
+                    st2.pop();
+                }
+                st1.pop();
+            }
+            st.pop();
+        }
     }
 }
