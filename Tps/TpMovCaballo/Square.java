@@ -7,13 +7,20 @@ import javax.xml.xpath.XPathExpressionException;
 import java.util.Arrays;
 
 public class Square {
+    private char colChar;
     private int columna;
     private int fila;
 
+    public Square(char colChar, int fila) {
+        this.colChar = colChar;
+        columna = charToInt();
+        this.fila = fila;
+    }
     public Square(int columna, int fila) {
         this.columna = columna;
         this.fila = fila;
     }
+
 
     public int getColumna() {
         return columna;
@@ -21,6 +28,20 @@ public class Square {
 
     public int getFila() {
         return fila;
+    }
+
+    public int charToInt(){
+        return switch (colChar) {
+            case 'A' -> 1;
+            case 'B' -> 2;
+            case 'C' -> 3;
+            case 'D' -> 4;
+            case 'E' -> 5;
+            case 'F' -> 6;
+            case 'G' -> 7;
+            case 'H' -> 8;
+            default -> throw new IllegalStateException("Unexpected value: " + columna);
+        };
     }
 
     public void optionsPrinter() throws IsEmptyException {
@@ -36,7 +57,7 @@ public class Square {
         //return stack;
         for (int i = 0; i < 8; i++) {
             if (stack.peek().columna > 0 && stack.peek().columna < 9 && stack.peek().fila > 0 && stack.peek().fila < 9){
-                stack.peek().printSquare();
+                System.out.println(stack.peek().printSquare());
             }
             stack.pop();
         }
@@ -117,5 +138,9 @@ public class Square {
             }
             st.pop();
         }
+    }
+
+    public boolean equals(Square square) {
+        return this.getColumna() == square.getColumna() && this.getFila() == square.getFila();
     }
 }

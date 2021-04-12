@@ -3,7 +3,7 @@ package TpMovCaballo;
 import StacksandQueues.IsEmptyException;
 
 public class Board {
-    private static Square[][] tablero;
+    private Square[][] tablero;
 
     public Board() {
         tablero = new Square[8][8];
