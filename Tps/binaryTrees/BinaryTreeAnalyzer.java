@@ -1,5 +1,6 @@
 package binaryTrees;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class BinaryTreeAnalyzer {
@@ -13,9 +14,9 @@ public class BinaryTreeAnalyzer {
 
         IntegerBinaryTree bprueba = new IntegerBinaryTree(10, bt, bt2);
         IntegerBinaryTree bprueba2 = new IntegerBinaryTree(7, bt, bt2);
-        IntegerBinaryTree bprueba3 = new IntegerBinaryTree(1,bt2,bt);
-        IntegerBinaryTree bprueba4 = new IntegerBinaryTree(1,bt2);
-        IntegerBinaryTree bprueba5 = new IntegerBinaryTree(1,bt,bt);
+        IntegerBinaryTree bprueba3 = new IntegerBinaryTree(1, bt2, bt);
+        IntegerBinaryTree bprueba4 = new IntegerBinaryTree(1, bt2);
+        IntegerBinaryTree bprueba5 = new IntegerBinaryTree(1, bt, bt);
 
 
         System.out.println(iguales(bprueba, bprueba2));
@@ -30,7 +31,6 @@ public class BinaryTreeAnalyzer {
 
 
     }
-
 
 
     static boolean iguales(IntegerBinaryTree a1, IntegerBinaryTree a2) {
@@ -68,16 +68,16 @@ public class BinaryTreeAnalyzer {
         }
 
         HashSet<Integer> set1 = new HashSet<>();
-        inorden(a1,set1);
+        inorden(a1, set1);
 
         HashSet<Integer> set2 = new HashSet<>();
-        inorden(a2,set2);
+        inorden(a2, set2);
 
         return set1.containsAll(set2);
     }
 
-    static boolean lleno(IntegerBinaryTree a){
-        if(a.isEmpty())
+    static boolean lleno(IntegerBinaryTree a) {
+        if (a.isEmpty())
             return false;
         if (a.getLeft().isEmpty() && a.getRight().isEmpty())
             return true;
@@ -85,7 +85,7 @@ public class BinaryTreeAnalyzer {
     }
 
     static boolean completo(IntegerBinaryTree a) {
-        if(a.isEmpty())
+        if (a.isEmpty())
             return false;
         if ((a.getLeft().isEmpty() || a.getRight().isEmpty()) && !(a.getLeft().isEmpty() && a.getRight().isEmpty()))
             return false;
@@ -93,10 +93,10 @@ public class BinaryTreeAnalyzer {
             return true;
     }
 
-    static boolean estable(IntegerBinaryTree a){
+    static boolean estable(IntegerBinaryTree a) {
         if (a.isEmpty()) {
             return true;
-        }else if (a.getLeft().isEmpty() && a.getRight().isEmpty()){
+        } else if (a.getLeft().isEmpty() && a.getRight().isEmpty()) {
             return true;
         }
 
@@ -137,12 +137,84 @@ public class BinaryTreeAnalyzer {
         }
     }*/
 
-    private static void inorden(IntegerBinaryTree a, HashSet<Integer> arr){
-        if(!a.isEmpty()){
-            inorden(a.getLeft(),arr);
+    private static void inorden(IntegerBinaryTree a, HashSet<Integer> arr) {
+        if (!a.isEmpty()) {
+            inorden(a.getLeft(), arr);
             arr.add(a.getRoot());
-            inorden(a.getRight(),arr);
+            inorden(a.getRight(), arr);
         }
     }
 
+    public boolean occursBinaryTree(BinaryTree t1, BinaryTree t2) {//returns true if t2 is included
+
+        if (t2.height() > t1.height()) {
+
+            return false;
+
+        }
+
+        if (t1.getRoot().equals(t2.getRoot())) {
+
+            if (t2.getRight().isEmpty() && t2.getLeft().isEmpty()) {
+
+                return true;
+
+            }
+
+            if (t2.getLeft().isEmpty()) {
+
+                return occursBinaryTree(t1.getRight(), t2.getRight());
+
+            }
+
+            if (t2.getRight().isEmpty()) {
+
+                return occursBinaryTree(t1.getLeft(), t2.getLeft());
+            }
+
+            return occursBinaryTree(t1.getLeft(), t2.getLeft()) && occursBinaryTree(t1.getRight(), t2.getRight());
+
+
+        }
+
+        return occursBinaryTree(t1.getLeft(), t2) || occursBinaryTree(t1.getRight(), t2);
+
+    }
+
+    public void showFrontier(BinaryTree t1) {//prints all the elements stored in
+
+        if (t1.isEmpty()) {
+
+            return;
+
+        }
+
+        if (t1.getLeft().isEmpty() && t1.getRight().isEmpty()) {
+            System.out.println(t1.getRoot().toString());
+
+        }
+
+        showFrontier(t1.getRight());
+        showFrontier(t1.getLeft());
+
+
+    }
+
+    public void frontier(BinaryTree t, ArrayList frontierElements) {
+
+        if (t.isEmpty()) {
+
+            return;
+
+        }
+
+        if (t.getLeft().isEmpty() && t.getRight().isEmpty()) {
+            frontierElements.add(t.getRoot());
+        }
+
+
+        frontier(t.getRight(), frontierElements);
+        frontier(t.getLeft(), frontierElements);
+
+    }
 }
