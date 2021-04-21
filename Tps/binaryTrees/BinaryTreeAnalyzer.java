@@ -16,8 +16,8 @@ public class BinaryTreeAnalyzer {
         IntegerBinaryTree bprueba2 = new IntegerBinaryTree(7, bt, bt2);
         IntegerBinaryTree bprueba3 = new IntegerBinaryTree(1, bt2, bt);
         IntegerBinaryTree bprueba4 = new IntegerBinaryTree(1, bt2);
-        IntegerBinaryTree bprueba5 = new IntegerBinaryTree(1, bt, bt);
-
+        IntegerBinaryTree bprueba5 = new IntegerBinaryTree(9, bl, br);
+        ArrayList<Integer> frontierElements = new ArrayList<>();
 
         System.out.println(iguales(bprueba, bprueba2));
         System.out.println(isomorfo(bprueba, bprueba2));
@@ -29,10 +29,13 @@ public class BinaryTreeAnalyzer {
         System.out.println(estable(bprueba));
         System.out.println(estable(bprueba5));
 
+        System.out.println(occursBinaryTree(bprueba,bprueba5));
 
-    }
+        showFrontier(bprueba);
+        frontier(bprueba,frontierElements);
+        System.out.println(frontierElements.size());
 
-
+    }*/
     static boolean iguales(IntegerBinaryTree a1, IntegerBinaryTree a2) {
         if (a1.isEmpty() && a2.isEmpty()) {
             return true;
@@ -103,40 +106,6 @@ public class BinaryTreeAnalyzer {
         return a.getRoot() > a.getLeft().getRoot() && a.getRoot() > a.getLeft().getRoot() && estable(a.getLeft()) && estable(a.getRight());
     }
 
-    //         1           |        1
-    //    3         4      |    3
-    //6     9   10      13 |6
-
-    /*static boolean ocurreArbin(IntegerBinaryTree a1, IntegerBinaryTree a2){
-        if (a1.height() == a2.height()){
-            return a1.getRoot().equals(a2.getRoot())
-        }else if (a1.height() > a2.height()){
-
-        }else {
-
-        }
-
-        /*if (a1.isEmpty() && a2.isEmpty()){
-            return true;
-        }
-
-        if (a1.height() == a2.height()){
-            if (a1.getRight().isEmpty() || a2.getRight().isEmpty()){
-                return ocurreArbin(a1.getLeft(), a2.getLeft());
-            }else if (a1.getLeft().isEmpty() || a2.getLeft().isEmpty()) {
-                return ocurreArbin(a1.getRight(), a2.getRight());
-            }else if (a1.getRoot().equals(a2.getRoot())) {
-                return ocurreArbin(a1.getRight(), a2.getRight()) && ocurreArbin(a1.getLeft(), a2.getLeft());
-            }else{
-                return false;
-            }
-        }else if (a1.height() > a2.height()){
-            return ocurreArbin(a1, a2.getLeft()) || ocurreArbin(a1,a2.getRight());
-        }else {
-            return ocurreArbin(a1.getLeft(), a2) || ocurreArbin(a1.getRight(),a2);
-        }
-    }*/
-
     private static void inorden(IntegerBinaryTree a, HashSet<Integer> arr) {
         if (!a.isEmpty()) {
             inorden(a.getLeft(), arr);
@@ -145,7 +114,7 @@ public class BinaryTreeAnalyzer {
         }
     }
 
-    public boolean occursBinaryTree(BinaryTree t1, BinaryTree t2) {//returns true if t2 is included
+    public static boolean occursBinaryTree(IntegerBinaryTree a1, IntegerBinaryTree a2) {//returns true if t2 is included
 
         if (a2.height() > a1.height()) {
 
@@ -181,7 +150,7 @@ public class BinaryTreeAnalyzer {
 
     }
 
-    public void showFrontier(BinaryTree t1) {//prints all the elements stored in
+    public static void showFrontier(IntegerBinaryTree a) {
 
         if (a.isEmpty()) {
 
@@ -200,21 +169,19 @@ public class BinaryTreeAnalyzer {
 
     }
 
-    public void frontier(BinaryTree t, ArrayList frontierElements) {
+    public static void frontier(IntegerBinaryTree a, ArrayList frontierElements) {
 
-        if (t.isEmpty()) {
-
+        if (a.isEmpty()) {
             return;
-
         }
 
-        if (t.getLeft().isEmpty() && t.getRight().isEmpty()) {
-            frontierElements.add(t.getRoot());
+        if (a.getLeft().isEmpty() && a.getRight().isEmpty()) {
+            frontierElements.add(a.getRoot());
         }
 
 
-        frontier(t.getRight(), frontierElements);
-        frontier(t.getLeft(), frontierElements);
+        frontier(a.getRight(), frontierElements);
+        frontier(a.getLeft(), frontierElements);
 
     }
 }
