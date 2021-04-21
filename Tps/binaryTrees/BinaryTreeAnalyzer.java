@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class BinaryTreeAnalyzer {
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         IntegerBinaryTree br = new IntegerBinaryTree(6);
         IntegerBinaryTree bl = new IntegerBinaryTree(4);
         IntegerBinaryTree bt = new IntegerBinaryTree(9, bl, br);
@@ -147,55 +147,55 @@ public class BinaryTreeAnalyzer {
 
     public boolean occursBinaryTree(BinaryTree t1, BinaryTree t2) {//returns true if t2 is included
 
-        if (t2.height() > t1.height()) {
+        if (a2.height() > a1.height()) {
 
             return false;
 
         }
 
-        if (t1.getRoot().equals(t2.getRoot())) {
+        if (a1.getRoot().equals(a2.getRoot())) {
 
-            if (t2.getRight().isEmpty() && t2.getLeft().isEmpty()) {
+            if (a2.getRight().isEmpty() && a2.getLeft().isEmpty()) {
 
                 return true;
 
             }
 
-            if (t2.getLeft().isEmpty()) {
+            if (a2.getLeft().isEmpty()) {
 
-                return occursBinaryTree(t1.getRight(), t2.getRight());
+                return occursBinaryTree(a1.getRight(), a2.getRight());
 
             }
 
-            if (t2.getRight().isEmpty()) {
+            if (a2.getRight().isEmpty()) {
 
-                return occursBinaryTree(t1.getLeft(), t2.getLeft());
+                return occursBinaryTree(a1.getLeft(), a2.getLeft());
             }
 
-            return occursBinaryTree(t1.getLeft(), t2.getLeft()) && occursBinaryTree(t1.getRight(), t2.getRight());
+            return occursBinaryTree(a1.getLeft(), a2.getLeft()) && occursBinaryTree(a1.getRight(), a2.getRight());
 
 
         }
 
-        return occursBinaryTree(t1.getLeft(), t2) || occursBinaryTree(t1.getRight(), t2);
+        return occursBinaryTree(a1.getLeft(), a2) || occursBinaryTree(a1.getRight(), a2);
 
     }
 
     public void showFrontier(BinaryTree t1) {//prints all the elements stored in
 
-        if (t1.isEmpty()) {
+        if (a.isEmpty()) {
 
             return;
 
         }
 
-        if (t1.getLeft().isEmpty() && t1.getRight().isEmpty()) {
-            System.out.println(t1.getRoot().toString());
+        if (a.getLeft().isEmpty() && a.getRight().isEmpty()) {
+            System.out.println(a.getRoot().toString());
 
         }
 
-        showFrontier(t1.getRight());
-        showFrontier(t1.getLeft());
+        showFrontier(a.getRight());
+        showFrontier(a.getLeft());
 
 
     }
