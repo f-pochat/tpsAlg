@@ -12,7 +12,6 @@ public class QueueDin<T> implements QueueInterface<T> {
 
     @Override
     public void enqueue(Object element) {
-        System.out.println(element);
         Node aux = new Node(element);
         if (end == null){
             front = end = aux;
@@ -33,7 +32,7 @@ public class QueueDin<T> implements QueueInterface<T> {
                 end = null;
             }
             size--;
-            System.out.println(aux.data);
+
             return (T) aux.data;
         }
     }
@@ -47,4 +46,5 @@ public class QueueDin<T> implements QueueInterface<T> {
     public int size() {
         return size;
     }
+
 }

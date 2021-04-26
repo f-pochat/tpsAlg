@@ -1,5 +1,7 @@
 package StacksandQueues;
 
+import TpMovCaballo.Square;
+
 public class StackDin<T> implements StackInterface<T> {
 
     Node tope;
@@ -49,4 +51,5 @@ public class StackDin<T> implements StackInterface<T> {
         tope.next = null;
         size = 0;
     }
+
 }
