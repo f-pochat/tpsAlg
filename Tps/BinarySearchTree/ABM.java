@@ -4,19 +4,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ABM {
-    //TODO:
-    //Crear excepciones
     static ArrayList<Genoma> list = new ArrayList<>();
     static Transfer transfer = new Transfer(list);
     static BinarySearchTree<Genoma> bst = transfer.transferListToBST();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IsEmptyException {
         System.out.println("ABM GENOMAS");
         System.out.println("Elija una opcion");
         menu();
     }
 
-    public static void menu(){
+    public static void menu() throws IsEmptyException {
         System.out.println("1. Alta");
         System.out.println("2. Baja");
         System.out.println("3. Modificaciones");
@@ -79,7 +77,7 @@ public class ABM {
         System.out.println();
     }
 
-    private static void baja(){
+    private static void baja() throws IsEmptyException {
         System.out.println("-----");
         System.out.println("Eliminar Genoma...");
         Scanner sc = new Scanner(System.in);
@@ -95,7 +93,7 @@ public class ABM {
         System.out.println();
     }
 
-    private static void modificar(){
+    private static void modificar() throws IsEmptyException {
         System.out.println("-----");
         System.out.println("Modificar Genoma...");
         Scanner sc = new Scanner(System.in);

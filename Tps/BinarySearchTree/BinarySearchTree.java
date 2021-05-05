@@ -17,27 +17,27 @@ public class BinarySearchTree <T>{
 
 
     // precondicion: elemento a eliminar pertenece al árbol
-    public void delete(Comparable <T> x){
+    public void delete(Comparable <T> x) throws IsEmptyException {
         root = delete(root, x);
     }
 
     // precondicion: árbol distinto de vacío
-    public T getMin(){
+    public T getMin() throws IsEmptyException {
         return getMin(root).elem;
     }
 
     // precondicion: árbol distinto de vacío
-    public T getMax(){
+    public T getMax() throws IsEmptyException {
         return getMax(root).elem;
     }
 
     // precondicion: elemnto a buscar pertenece al arbol
-    public T search(Comparable<T> x){
+    public T search(Comparable<T> x) throws IsEmptyException {
         return search(root, x).elem;
     }
 
     // precondicion: -
-    public boolean exists(Comparable<T> x){
+    public boolean exists(Comparable<T> x) throws IsEmptyException {
         return exists(root, x);
     }
 
@@ -67,21 +67,30 @@ public class BinarySearchTree <T>{
 
 
     // METODOS PRIVADOS
-    private NodoDoble<T> getMax(NodoDoble <T> t){
+    private NodoDoble<T> getMax(NodoDoble <T> t) throws IsEmptyException {
+        if (isEmpty()){
+            throw new IsEmptyException();
+        }
         if (t.der == null)
             return t;
         else
             return getMax(t.der);
     }
 
-    private NodoDoble <T> getMin(NodoDoble <T> t){
+    private NodoDoble <T> getMin(NodoDoble <T> t) throws IsEmptyException {
+        if (isEmpty()){
+            throw new IsEmptyException();
+        }
         if (t.izq == null)
             return t;
         else
             return getMin(t.izq);
     }
 
-    private NodoDoble <T> search(NodoDoble <T> t, Comparable<T> x){
+    private NodoDoble <T> search(NodoDoble <T> t, Comparable<T> x) throws IsEmptyException {
+        if (isEmpty()){
+            throw new IsEmptyException();
+        }
         if (x.compareTo(t.elem)== 0)
             return t;
         else if (x.compareTo( t.elem)< 0)
@@ -90,7 +99,10 @@ public class BinarySearchTree <T>{
             return search(t.der, x);
     }
 
-    private boolean exists(NodoDoble <T> t, Comparable<T> x) {
+    private boolean exists(NodoDoble <T> t, Comparable<T> x) throws IsEmptyException {
+        if (isEmpty()){
+            throw new IsEmptyException();
+        }
         if (t == null)
             return false;
         if (x.compareTo(t.elem) == 0)
@@ -116,7 +128,10 @@ public class BinarySearchTree <T>{
     }
 
 
-    private NodoDoble<T> delete (NodoDoble<T> t, Comparable<T> x) {
+    private NodoDoble<T> delete (NodoDoble<T> t, Comparable<T> x) throws IsEmptyException {
+        if (isEmpty()){
+            throw new IsEmptyException();
+        }
         if (x.compareTo(t.elem) < 0)
             t.izq = delete(t.izq, x);
         else if (x.compareTo(t.elem) > 0)
@@ -133,7 +148,10 @@ public class BinarySearchTree <T>{
         return t;
     }
 
-    private NodoDoble<T> deleteMin(NodoDoble<T> t){
+    private NodoDoble<T> deleteMin(NodoDoble<T> t) throws IsEmptyException {
+        if (isEmpty()){
+            throw new IsEmptyException();
+        }
         if (t.izq != null)
             t.izq = deleteMin(t.izq);
         else
