@@ -71,7 +71,7 @@ public class Simulacion {
         int counterTotalRevenue = 0;
         System.out.println("---TICKETS---");
         for (int i = 0; i < numOfTickets; i++) {
-            System.out.println("Numero: " + ticketStack.peek().numero  + " Tiempo de atencion: " + ticketStack.peek().attentionTime);
+            System.out.println("Numero: " + String.format("%05d", ticketStack.peek().numero)  + " Tiempo de atencion: " + ticketStack.peek().attentionTime);
             counterOfTotalAttentionTime += ticketStack.peek().attentionTime;
             ticketStack.pop();
         }
