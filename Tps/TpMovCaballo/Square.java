@@ -134,4 +134,5 @@ public class Square {
     public boolean equals(Square square) {
         return this.getcolumnAsInt() == square.getcolumnAsInt() && this.getrow() == square.getrow();
     }
+
 }
