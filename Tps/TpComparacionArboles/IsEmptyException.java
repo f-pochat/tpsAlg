@@ -1,4 +1,4 @@
-package BinarySearchTree;
+package TpComparacionArboles;
 
 public class IsEmptyException extends Exception {
     public IsEmptyException() {

@@ -1,5 +1,7 @@
 package BinarySearchTree;
 
+import TpComparacionArboles.BinarySearchTree;
+
 import java.util.ArrayList;
 
 public class Transfer {

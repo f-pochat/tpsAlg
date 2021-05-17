@@ -1,5 +1,8 @@
 package BinarySearchTree;
 
+import TpComparacionArboles.BinarySearchTree;
+import TpComparacionArboles.IsEmptyException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -40,7 +43,7 @@ public class ABM {
             }
             case 4 -> {
                 //Informe
-                generarInforme();
+                //generarInforme();
                 System.exit(0);
             }
             default -> menu();
@@ -127,7 +130,7 @@ public class ABM {
         System.out.println();
     }
 
-    private static void generarInforme(){
+    /*private static void generarInforme(){
         bst.inorden(bst);
-    }
+    }*/
 }

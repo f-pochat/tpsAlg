@@ -1,4 +1,4 @@
-package BinarySearchTree;
+package TpComparacionArboles;
 
 public class NodoDoble <T>{
     T elem;

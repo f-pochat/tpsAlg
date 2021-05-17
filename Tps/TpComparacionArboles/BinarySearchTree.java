@@ -1,4 +1,4 @@
-package BinarySearchTree;
+package TpComparacionArboles;
 
 public class BinarySearchTree <T>{
     // Implementacion de un arbol binario de busqueda no balanceado
@@ -158,17 +158,41 @@ public class BinarySearchTree <T>{
             t = t.der;
         return t;
     }
-
-    public void inorden(BinarySearchTree<Genoma>  a){
-        if(!a.isEmpty()){
-            inorden(a.getLeft());
-            System.out.println("Codigo: " + a.getRoot().code);
-            System.out.println("Tipo: " + a.getRoot().type);
-            System.out.println("Descripcion: " + a.getRoot().description);
-            System.out.println("Tamano: " + a.getRoot().size);
-            System.out.println();
-            inorden(a.getRight());
+    private int heightHelper(){
+        if (isEmpty()){
+            return 0;
         }
+        if (getRight() == null && getLeft() == null){
+            return 0;
+        }
+        return 1 + Math.max(getLeft().heightHelper(), getRight().heightHelper());
     }
+
+    public int getHeight(){
+        return heightHelper()-1;
+    }
+
+    public static void main(String [] args) {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+
+        bst.insert(1);
+        bst.insert(2);
+        bst.insert(3);
+        bst.insert(4);
+        bst.insert(5);
+        bst.insert(6);
+        bst.insert(7);
+        bst.insert(8);
+        bst.insert(9);
+        bst.insert(10);
+        bst.insert(10);
+        bst.insert(10);
+        bst.insert(10);
+        bst.insert(10);
+        bst.insert(10);
+        bst.insert(10);
+        System.out.println(bst.getHeight());
+    }
+
 }
 
