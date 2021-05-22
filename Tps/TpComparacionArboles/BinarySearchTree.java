@@ -5,6 +5,7 @@ public class BinarySearchTree <T>{
     // Autor Alicia Gioia
 
     private NodoDoble<T> root;
+    private int counterOfSearchs;
 
     public BinarySearchTree(){
         root = null;
@@ -88,15 +89,21 @@ public class BinarySearchTree <T>{
     }
 
     private NodoDoble <T> search(NodoDoble <T> t, Comparable<T> x) throws IsEmptyException {
-        if (isEmpty()){
+
+        if (isEmpty()) {
             throw new IsEmptyException();
         }
-        if (x.compareTo(t.elem)== 0)
+
+        if (x.compareTo(t.elem) == 0) {
+            counterOfSearchs++;
             return t;
-        else if (x.compareTo( t.elem)< 0)
+        } else if (x.compareTo(t.elem) < 0) {
+            counterOfSearchs++;
             return search(t.izq, x);
-        else
+        }else{
+            counterOfSearchs++;
             return search(t.der, x);
+        }
     }
 
     private boolean exists(NodoDoble <T> t, Comparable<T> x) throws IsEmptyException {
@@ -158,6 +165,9 @@ public class BinarySearchTree <T>{
             t = t.der;
         return t;
     }
+
+    //Implementaciones Propias
+
     private int heightHelper(){
         if (isEmpty()){
             return 0;
@@ -170,6 +180,12 @@ public class BinarySearchTree <T>{
 
     public int getHeight(){
         return heightHelper()-1;
+    }
+
+    public int getNumberOfComparisons(Comparable<T> x) throws IsEmptyException {
+        counterOfSearchs = 0;
+        search(x);
+        return counterOfSearchs;
     }
 
     public static void main(String [] args) {

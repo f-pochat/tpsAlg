@@ -20,6 +20,7 @@ class Node {
 
 public class AVLTree {
     private Node root;
+    private int counterOfSearches;
 
     public AVLTree() {
         root = null;
@@ -46,13 +47,22 @@ public class AVLTree {
 
     private Node searchTreeHelper(Node node, int key) {
         if (node == null || key == node.data) {
+            counterOfSearches++;
             return node;
         }
 
         if (key < node.data) {
+            counterOfSearches++;
             return searchTreeHelper(node.left, key);
         }
+        counterOfSearches++;
         return searchTreeHelper(node.right, key);
+    }
+
+    public int getCounterOfSearches(int x){
+        counterOfSearches = 0;
+        searchTree(x);
+        return counterOfSearches;
     }
 
     private Node deleteNodeHelper(Node node, int key) {
@@ -326,7 +336,7 @@ public class AVLTree {
         return t;
     }
 
-    private int getHeight(){
+    public int getHeight(){
         if (root == null){
             return 0;
         }

@@ -13,6 +13,7 @@ class NodeRN {
 public class RedBlackTree {
     private NodeRN root;
     private NodeRN TNULL;
+    private int counterOfSearches;
 
     private void preOrderHelper(NodeRN NodeRN) {
         if (NodeRN != TNULL) {
@@ -40,14 +41,23 @@ public class RedBlackTree {
 
     private NodeRN searchTreeHelper(NodeRN NodeRN, int key) {
         if (NodeRN == TNULL || key == NodeRN.data) {
+            counterOfSearches++;
             return NodeRN;
         }
 
         if (key < NodeRN.data) {
+            counterOfSearches++;
             return searchTreeHelper(NodeRN.left, key);
         }
+        counterOfSearches++;
         return searchTreeHelper(NodeRN.right, key);
     }
+    public int getCounterOfSearches(int x){
+        counterOfSearches = 0;
+        searchTree(x);
+        return counterOfSearches;
+    }
+
 
     // fix the rb tree modified by the delete operation
     private void fixDelete(NodeRN x) {
@@ -458,7 +468,7 @@ public class RedBlackTree {
         return 1 + Math.max(getLeft().heightHelper(), getRight().heightHelper());
     }
     
-    private int getHeight(){
+    public int getHeight(){
         return heightHelper() - 1;
     }
     
