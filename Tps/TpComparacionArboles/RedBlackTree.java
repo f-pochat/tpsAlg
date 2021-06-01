@@ -8,7 +8,6 @@ class NodeRN {
     int color; // 1 . Red, 0 . Black
 }
 
-
 // class RedBlackTree implements the operations in Red Black Tree
 public class RedBlackTree {
     private NodeRN root;

@@ -17,7 +17,7 @@ public class TpComparacionArboles {
         BinarySearchTree<Integer> bst = createBST(intArray);
         long endTime = System.nanoTime();
         System.out.print("Time: ");
-        System.out.println(endTime - startTime);
+        System.out.println((endTime - startTime));
 
         System.out.println("AVL");
         long startTimeAVL = System.nanoTime();

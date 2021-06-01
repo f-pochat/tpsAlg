@@ -30,6 +30,7 @@ public class Ej1 {
           return null;
       }
   };
+
   //Devuelven la posicion en donde se encuentra el string. En caso de no estar, devuelve -1
     public static int SeqSearch ( int a[], int k) {
         for (int i = 0; i < a.length; i++)

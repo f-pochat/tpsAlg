@@ -208,6 +208,7 @@ public class BinarySearchTree <T>{
         bst.insert(10);
         bst.insert(10);
         System.out.println(bst.getHeight());
+
     }
 
 }

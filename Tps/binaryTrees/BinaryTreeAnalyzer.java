@@ -46,11 +46,11 @@ public class BinaryTreeAnalyzer {
             } else {
                 return false;
             }
-
         }
     }
 
     static boolean isomorfo(IntegerBinaryTree a1, IntegerBinaryTree a2) {
+
         if (a1.isEmpty() && a2.isEmpty()) {
             return true;
         }
