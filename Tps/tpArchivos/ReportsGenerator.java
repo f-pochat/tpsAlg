@@ -3,11 +3,10 @@ package tpArchivos;
 import java.io.*;
 
 public class ReportsGenerator {
-    private void generateSalesFile() throws IOException {
+    public void generateSalesFile(Sales[] sales) throws IOException {
         RandomAccessFile raf = null;
-        Sales[] sales = new Sales[1000];
 
-        File f = new File("Sales");
+        File f = new File("sales.txt");
         try{
             raf = new RandomAccessFile(f, "rw");
         } catch (FileNotFoundException e) {
@@ -25,12 +24,11 @@ public class ReportsGenerator {
         }
     }
 
-    private void generateDestinationsFile() throws IOException{
-        Destination[] destinations = new Destination[30];
+    public void generateDestinationsFile(Destination[] destinations) throws IOException{
         try {
-            FileWriter fileWriter = new FileWriter("Destinations");
+            FileWriter fileWriter = new FileWriter("destinations.txt");
             for (Destination des:destinations) {
-                fileWriter.write(des.code+""+des.description);
+                fileWriter.write(des.code+""+des.description+"\n");
             }
             fileWriter.close();
         } catch (IOException e) {
@@ -38,13 +36,12 @@ public class ReportsGenerator {
         }
     }
 
-    private void generatePricesFile() throws IOException{
-        PriceUSD[] prices = new PriceUSD[12];
+    public void generatePricesFile(PriceUSD[] prices) throws IOException{
 
         try {
-            FileWriter fileWriter = new FileWriter("Prices");
+            FileWriter fileWriter = new FileWriter("prices.txt");
             for (PriceUSD price:prices) {
-                fileWriter.write(String.format("%02",price.month)+ price.valueUSD);
+                fileWriter.write(String.format("%02d",price.month)+ price.valueUSD+"\n");
             }
             fileWriter.close();
         } catch (IOException e) {
